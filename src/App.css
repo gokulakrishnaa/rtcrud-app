@@ -1,3 +1,14 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.home > img {
+  width: 80%;
+}
+
 .book-image {
   max-height: 330px;
 }
@@ -8,7 +19,7 @@
   gap: 10px;
   width: 60%;
   height: 330px;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .bookimg {
@@ -21,4 +32,35 @@
 h2,
 h4 {
   margin: 10px;
+}
+
+.edit-delete {
+  display: flex;
+}
+
+.add-book-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.add-book {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 50%;
+}
+
+.book-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  width: 500px;
+}
+
+.book-info-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
