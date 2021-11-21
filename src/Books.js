@@ -4,15 +4,31 @@ import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { useHistory } from "react-router-dom";
+import { useState, useEffect } from "react";
 import InfoIcon from "@mui/icons-material/Info";
 
-export function Books({ books, setBooks }) {
+export function Books() {
   const history = useHistory();
+  const [books, setBooks] = useState([]);
+  const getBooks = () => {
+    fetch("https://616a3fa516e7120017fa0ee6.mockapi.io/books")
+      .then((data) => data.json())
+      .then((bks) => setBooks(bks));
+  };
+  useEffect(getBooks, []);
+
+  const deleteBook = (id) => {
+    fetch(`https://616a3fa516e7120017fa0ee6.mockapi.io/books/${id}`, {
+      method: "DELETE",
+    }).then(() => getBooks());
+  };
+
   return (
     <div className="books-app">
-      {books.map(({ name, author, description, cover, rating, id }, index) => (
+      {books.map(({ name, author, description, cover, rating, id }) => (
         <Booklist
-          id={index}
+          key={id}
+          id={id}
           name={name}
           author={author}
           cover={cover}
@@ -21,9 +37,10 @@ export function Books({ books, setBooks }) {
           deletebutton={
             <IconButton
               onClick={() => {
-                const deleteindex = index;
-                const remBooks = books.filter((bk, idx) => idx !== deleteindex);
-                setBooks(remBooks);
+                deleteBook(id);
+                // const deleteindex = index;
+                // const remBooks = books.filter((bk, idx) => idx !== deleteindex);
+                // setBooks(remBooks);
               }}
               aria-label="delete"
               color="error"
@@ -34,7 +51,7 @@ export function Books({ books, setBooks }) {
           editbutton={
             <IconButton
               style={{ marginLeft: "auto" }}
-              onClick={() => history.push("/books/edit/" + index)}
+              onClick={() => history.push("/books/edit/" + id)}
               aria-label="edit"
               color="secondary"
             >

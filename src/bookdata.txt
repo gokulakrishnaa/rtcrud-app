@@ -1,13 +1,15 @@
-const books = [
+const booksdata = [
     {
+      id: 100,
       name: "Steve Jobs",
       author: "Walter Isaacson",
       cover: "https://images-na.ssl-images-amazon.com/images/I/81VStYnDGrL.jpg",
       description:
-        "Walter Isaacson's enthralling (The New Yorker) worldwide bestselling biography of Apple cofounder Steve Jobs. Based on more than forty interviews with Steve Jobs conducted over two years--as well as interviews with more than 100 family members, friends, adversaries, competitors, and colleagues--Walter Isaacson has written a riveting story of the roller-coaster life and searingly intense personality of a creative entrepreneur whose passion for perfection and ferocious drive revolutionized six industries: personal computers, animated movies, music, phones, tablet computing, and digital publishing.",
+        "Walter Isaacson's enthralling (The New Yorker) worldwide bestselling biography of Apple cofounder Steve Jobs. Based on more than forty interviews with Steve Jobs conducted over two years--as well as interviews with more than 100 family members, friends, adversaries, competitors, and colleagues--Walter Isaacson has written a riveting story of the roller-coaster life and searingly intense personality of a creative entrepreneur whose passion for perfection and ferocious drive revolutionized six industries.",
       rating: 4,
     },
     {
+      id: 101,
       name: "Ponniyin Selvan",
       author: "Kalki",
       cover: "https://images-na.ssl-images-amazon.com/images/I/71q5EXjs4sL.jpg",
@@ -16,15 +18,17 @@ const books = [
       rating: 4.7,
     },
     {
+      id: 102,
       name: "Shoe Dog",
       author: "Phil Knight",
       cover:
         "https://images-na.ssl-images-amazon.com/images/I/41K0Lnqfe4L._SX323_BO1,204,203,200_.jpg",
       description:
-        "In 1962, fresh out of business school, phil knight borrowed $50 from his father and created a company with a simple mission: import high-quality, low-cost athletic shoes from japan. Selling the shoes from the boot of his Plymouth, knight grossed $8000 in his first year. Today, nike's annual sales top $30 billion. In an age of start-ups, nike is the ne plus ultra of all start-ups, and the swoosh has become a revolutionary, globe-spanning icon, one of the most ubiquitous and recognisable symbols in the world today. But knight, the man behind the swoosh, has always remained a mystery. Now, for the first time, he tells his story.",
+        "In 1962, fresh out of business school, phil knight borrowed $50 from his father and created a company with a simple mission: import high-quality, low-cost athletic shoes from japan. Selling the shoes from the boot of his Plymouth, knight grossed $8000 in his first year. Today, nike's annual sales top $30 billion. In an age of start-ups, nike is the ne plus ultra of all start-ups, and the swoosh has become a revolutionary, globe-spanning icon, one of the most ubiquitous and recognisable symbols in the world today.",
       rating: 4.2,
     },
     {
+      id: 103,
       name: "Elon Musk",
       author: "Ashlee Vance",
       cover:
@@ -34,6 +38,7 @@ const books = [
       rating: 4.3,
     },
     {
+      id: 104,
       name: "The Ride of Lifetime",
       author: "Robert Iger",
       cover:
@@ -43,12 +48,13 @@ const books = [
       rating: 4.4,
     },
     {
+      id: 105,
       name: "Notes of a Dream",
       author: "Krishna",
       cover:
         "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1533093988l/41018413._SX318_.jpg",
       description:
-        "Who really is A.R. Rahman? We know the music. But do we know the man? For the first time, a nation's pride--winner of National Film awards, Oscars, Grammys and hearts--opens up about his philosophies: hope, perseverance, positivity and love. From his early days as a composer of advertisement jingles to his first big break in feature films, from his keenness to integrate new technology with good old-fashioned music scores to the founding of his music school, from his resounding entry on to the international stage to his directorial debut, from his philanthropy to his inner life, Notes of a Dream captures Rahman's extraordinary success story with all the rhythm and melody, the highs and lows, of a terrific soundtrack by the man himself.",
+        "Who really is A.R. Rahman? We know the music. But do we know the man? For the first time, a nation's pride--winner of National Film awards, Oscars, Grammys and hearts--opens up about his philosophies: hope, perseverance, positivity and love.",
       rating: 4,
     },
   ];

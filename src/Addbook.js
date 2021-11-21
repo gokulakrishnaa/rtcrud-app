@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-export function Addbook({ books, setBooks }) {
+export function Addbook() {
   const history = useHistory();
   const [name, setName] = useState("");
   const [author, setAuthor] = useState("");
@@ -19,8 +19,15 @@ export function Addbook({ books, setBooks }) {
       description: description,
       rating: rating,
     };
-    setBooks([...books, newBook]);
-    history.push("/books");
+    // setBooks([...books, newBook]);
+
+    fetch("https://616a3fa516e7120017fa0ee6.mockapi.io/books", {
+      method: "POST",
+      body: JSON.stringify(newBook),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then(() => history.push("/books"));
   };
 
   return (
