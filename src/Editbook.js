@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import { useFormik } from "formik";
+import { formValidationSchema } from "./Addbook";
 
 export function Editbook() {
   const { id } = useParams();
@@ -19,19 +21,35 @@ export function Editbook() {
 
 function UpdateBook({ book }) {
   const history = useHistory();
-  const [name, setName] = useState(book.name);
-  const [author, setAuthor] = useState(book.author);
-  const [cover, setCover] = useState(book.cover);
-  const [description, setDescription] = useState(book.description);
-  const [rating, setRating] = useState(book.rating);
-  const editBook = () => {
-    const updatedBook = {
-      name: name,
-      author: author,
-      cover: cover,
-      description: description,
-      rating: rating,
-    };
+  // const [name, setName] = useState(book.name);
+  // const [author, setAuthor] = useState(book.author);
+  // const [cover, setCover] = useState(book.cover);
+  // const [description, setDescription] = useState(book.description);
+  // const [rating, setRating] = useState(book.rating);
+
+  const { handleSubmit, handleChange, handleBlur, values, errors, touched } =
+    useFormik({
+      initialValues: {
+        name: book.name,
+        author: book.author,
+        cover: book.cover,
+        description: book.description,
+        rating: book.rating,
+      },
+      validationSchema: formValidationSchema,
+      onSubmit: (updatedBook) => {
+        editBook(updatedBook);
+      },
+    });
+
+  const editBook = (updatedBook) => {
+    // const updatedBook = {
+    //   name: name,
+    //   author: author,
+    //   cover: cover,
+    //   description: description,
+    //   rating: rating,
+    // };
 
     fetch(`https://616a3fa516e7120017fa0ee6.mockapi.io/books/${book.id}`, {
       method: "PUT",
@@ -43,47 +61,69 @@ function UpdateBook({ book }) {
   };
 
   return (
-    <div className="add-book-container">
+    <form onSubmit={handleSubmit} className="add-book-container">
       <div className="add-book">
         <TextField
-          id="standard-basic"
-          value={name}
-          onChange={(event) => setName(event.target.value)}
+          id="name"
+          name="name"
+          value={values.name}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          error={errors.name && touched.name}
+          helperText={errors.name && touched.name && errors.name}
           label="Book Name"
           variant="standard"
         />
         <TextField
-          id="standard-basic"
-          value={author}
-          onChange={(event) => setAuthor(event.target.value)}
+          id="author"
+          name="author"
+          value={values.author}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          error={errors.author && touched.author}
+          helperText={errors.author && touched.author && errors.author}
           label="Author"
           variant="standard"
         />
         <TextField
-          id="standard-basic"
-          value={cover}
-          onChange={(event) => setCover(event.target.value)}
+          id="cover"
+          name="cover"
+          value={values.cover}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          error={errors.cover && touched.cover}
+          helperText={errors.cover && touched.cover && errors.cover}
           label="Cover Image"
           variant="standard"
         />
         <TextField
-          id="standard-basic"
-          value={description}
-          onChange={(event) => setDescription(event.target.value)}
+          id="description"
+          name="description"
+          value={values.description}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          error={errors.description && touched.description}
+          helperText={
+            errors.description && touched.description && errors.description
+          }
           label="Description"
           variant="standard"
         />
         <TextField
-          id="standard-basic"
-          value={rating}
-          onChange={(event) => setRating(event.target.value)}
+          id="rating"
+          name="rating"
+          value={values.rating}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          error={errors.rating && touched.rating}
+          helperText={errors.rating && touched.rating && errors.rating}
           label="Rating"
           variant="standard"
         />
-        <Button onClick={editBook} variant="outlined">
+        <Button type="submit" variant="outlined">
           Save
         </Button>
       </div>
-    </div>
+    </form>
   );
 }
